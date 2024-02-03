@@ -591,8 +591,8 @@ class Layout {
 
 						// Check if the node is inside a row with a rowspan
 						const table = parentOf(tableRow, "TABLE", rendered);
-						const rowspan = table.querySelector("[colspan]");
-						if (table && rowspan) {
+						const rowspan = table && table.querySelector("[colspan]");
+						if (rowspan) {
 							let columnCount = 0;
 							for (const cell of Array.from(table.rows[0].cells)) {
 								columnCount += parseInt(cell.getAttribute("colspan") || "1");
