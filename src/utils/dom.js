@@ -39,7 +39,7 @@ export function* walk(start, limiter) {
 }
 
 export function nodeAfter(node, limiter) {
-	if (limiter && node === limiter) {
+	if (limiter && node === limiter || !node) {
 		return;
 	}
 	let significantNode = nextSignificantNode(node);

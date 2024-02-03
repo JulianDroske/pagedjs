@@ -40,6 +40,13 @@ class Layout {
 		this.element = element;
 
 		this.bounds = this.element.getBoundingClientRect();
+		/*
+			render target must not be display: none.
+			ref: https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetParent#sect1
+		*/
+		if(window.getComputedStyle(this.element).display == 'none'){
+			throw 'paged.js: element is not visible; try to remove "display: none" on target element';
+		}
 		this.parentBounds = this.element.offsetParent.getBoundingClientRect();
 		let gap = parseFloat(window.getComputedStyle(this.element).columnGap);
 	
